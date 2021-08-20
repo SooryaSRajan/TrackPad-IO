@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConnectionActivity">
+
+    <EditText
+        android:inputType="number|numberDecimal"
+        android:digits="0123456789."
+        android:id="@+id/ip_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/port_no"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/text_box"
+        android:hint="Enter IP address..."
+        android:padding="15dp" />
+
+    <EditText
+        android:layout_centerInParent="true"
+        android:inputType="number"
+        android:layout_marginTop="15dp"
+        android:id="@+id/port_no"
+        android:background="@drawable/text_box"
+        android:hint="Enter Port Number..."
+        android:padding="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/connect"
+        android:padding="15dp"
+        android:textSize="12sp"
+        android:text="Connect to server"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_below="@+id/port_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

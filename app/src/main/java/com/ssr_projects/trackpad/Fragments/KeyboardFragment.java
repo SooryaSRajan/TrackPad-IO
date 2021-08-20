@@ -15,7 +15,7 @@ public class KeyboardFragment extends Fragment {
     public KeyboardFragment() {
     }
 
-    public static KeyboardFragment newInstance(String param1, String param2) {
+    public static KeyboardFragment newInstance() {
         return new KeyboardFragment();
     }
 

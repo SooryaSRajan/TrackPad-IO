@@ -29,4 +29,10 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <style name="TrackPadCardView">
+        <item name="cardBackgroundColor">@color/colorGrey</item>
+        <item name="cardCornerRadius">5dp</item>
+        <item name="cardElevation">3dp</item>
+    </style>
+
 </resources>

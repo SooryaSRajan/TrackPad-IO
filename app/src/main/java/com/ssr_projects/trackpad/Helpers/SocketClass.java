@@ -1,4 +1,4 @@
-package com.ssr_projects.trackpad;
+package com.ssr_projects.trackpad.Helpers;
 
 import android.util.Log;
 

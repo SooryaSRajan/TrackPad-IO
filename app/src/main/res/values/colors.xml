@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorHighlight">#383838</color>
     <color name="navigation_drawer_background">#E6E6E6</color>
+    <color name="colorGrey">#424242</color>
+    <color name="colorWhiteDark">#B3B3B3</color>
 </resources>

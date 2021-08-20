@@ -1,9 +1,12 @@
-package com.ssr_projects.trackpad;
+package com.ssr_projects.trackpad.Helpers;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.View;
+
+import com.ssr_projects.trackpad.ConnectionActivity;
+import com.ssr_projects.trackpad.R;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -12,9 +15,9 @@ public class LoadingDialog {
     private final AlertDialog.Builder builder;
     private final View dialogLayout;
     private AlertDialog dialog;
-    private Activity activity;
+    private final Activity activity;
 
-    protected LoadingDialog(Activity activity, int resId) {
+    public LoadingDialog(Activity activity, int resId) {
         this.activity = activity;
         builder = new AlertDialog.Builder(activity);
         dialogLayout = activity.getLayoutInflater().inflate(resId, null);

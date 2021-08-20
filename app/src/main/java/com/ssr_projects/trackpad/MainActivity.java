@@ -2,32 +2,47 @@ package com.ssr_projects.trackpad;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ssr_projects.trackpad.Fragments.KeyboardFragment;
+import com.ssr_projects.trackpad.Fragments.TrackPadFragment;
+import com.ssr_projects.trackpad.Helpers.LoadingDialog;
+import com.ssr_projects.trackpad.Helpers.SocketClass;
 
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
+import static com.ssr_projects.trackpad.Constants.Constants.CONFIG_PREFERENCE_KEY;
+import static com.ssr_projects.trackpad.Constants.Constants.MEDIA_TREY;
+import static com.ssr_projects.trackpad.Constants.Constants.MOUSE_KEYBOARD_RES;
+import static com.ssr_projects.trackpad.Constants.Constants.SERVER_REQUEST_ADDRESS;
+
 public class MainActivity extends AppCompatActivity {
 
-    private GestureDetector mDetector;
-    private static String TAG = MainActivity.class.getName();
-    Socket mSocket = SocketClass.getSocketInstance();
-    private boolean twoFingersDownFlag = false;
-    LinearLayout mediaControlLayout;
+    private static final String TAG = MainActivity.class.getName();
+    private Socket mSocket = SocketClass.getSocketInstance();
+    private LinearLayout mediaControlLayout;
     private boolean isVisible = false;
-    SharedPreferences sharedPreferences;
-    LoadingDialog loadingDialog;
+    private SharedPreferences sharedPreferences;
+    private LoadingDialog loadingDialog;
+    private int iconId = R.drawable.ic_baseline_keyboard_24;
+    private Fragment trackPadFragment, keyboardFragment;
+    FloatingActionButton keyboardTrackPadButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +50,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mediaControlLayout = findViewById(R.id.media_control_layout);
-        sharedPreferences = getSharedPreferences("IP_ADDRESS_PREF", MODE_PRIVATE);
-        mediaControlLayout.setTranslationY(mediaControlLayout.getHeight());
+        keyboardTrackPadButton = findViewById(R.id.keyboard_mouse_fab);
+
+        sharedPreferences = getSharedPreferences(CONFIG_PREFERENCE_KEY, MODE_PRIVATE);
+
+        loadingDialog = new LoadingDialog(this, R.layout.loading_dialog);
+        loadingDialog.build();
+        loadingDialog.setCancelable(false);
+
+        trackPadFragment = TrackPadFragment.newInstance();
+        keyboardFragment = KeyboardFragment.newInstance();
 
         if (savedInstanceState != null) {
-            isVisible = savedInstanceState.getBoolean("MEDIA_TREY");
+            isVisible = savedInstanceState.getBoolean(MEDIA_TREY);
+            iconId = savedInstanceState.getInt(MOUSE_KEYBOARD_RES);
+            keyboardTrackPadButton.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, iconId));
+
             if (!isVisible) {
                 mediaControlLayout.setVisibility(View.GONE);
                 mediaControlLayout.setTranslationY(mediaControlLayout.getHeight());
@@ -47,20 +73,50 @@ public class MainActivity extends AppCompatActivity {
                 mediaControlLayout.setVisibility(View.VISIBLE);
                 mediaControlLayout.setTranslationY(0);
             }
+        } else {
+            mediaControlLayout.setTranslationY(mediaControlLayout.getHeight());
         }
 
-        loadingDialog = new LoadingDialog(this, R.layout.loading_dialog);
-        loadingDialog.build();
-        loadingDialog.setCancelable(false);
+        if (iconId == R.drawable.ic_baseline_keyboard_24) {
+            setTrackPadLayout();
+        } else {
+            setKeyboardLayout();
+        }
 
+        keyboardTrackPadButton.setOnClickListener(view -> {
+            if (iconId == R.drawable.ic_baseline_keyboard_24) {
+                keyboardTrackPadButton.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_baseline_mouse_24));
+                iconId = R.drawable.ic_baseline_mouse_24;
+                setKeyboardLayout();
+
+            } else {
+                keyboardTrackPadButton.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_baseline_keyboard_24));
+                iconId = R.drawable.ic_baseline_keyboard_24;
+                setTrackPadLayout();
+            }
+        });
+
+        configureServerConnection();
+    }
+
+    private void setKeyboardLayout() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, keyboardFragment).commit();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+    }
+
+    private void setTrackPadLayout() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, trackPadFragment).commit();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+    }
+
+    private void configureServerConnection() {
         Log.d(getClass().getName(), "onCreate: " + mSocket.connected());
-
         Emitter.Listener onConnect = args -> {
             System.out.println("Connected to server");
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("IP_ADDRESS", SocketClass.getIpAddress());
+            editor.putString(SERVER_REQUEST_ADDRESS, SocketClass.getIpAddress());
             editor.apply();
-            String ipAddressPref = sharedPreferences.getString("IP_ADDRESS", null);
+            String ipAddressPref = sharedPreferences.getString(SERVER_REQUEST_ADDRESS, null);
             Log.d(TAG, "onCreate: " + ipAddressPref);
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(() -> loadingDialog.dismiss());
@@ -78,67 +134,8 @@ public class MainActivity extends AppCompatActivity {
             mSocket.connect();
             mSocket.on("connect", onConnect);
             mSocket.on("disconnect", onDisconnect);
-            mSocket.emit("activity", getClass().getName());
         }
-
-
-        mDetector = new GestureDetector(this, new MyGestureListener());
-        View touchPadView = findViewById(R.id.root);
-        View leftButton = findViewById(R.id.left_button);
-        View rightButton = findViewById(R.id.right_button);
-
-        touchPadView.setOnTouchListener(touchListener);
-        leftButton.setOnTouchListener(leftListener);
-        rightButton.setOnTouchListener(rightListener);
-
     }
-
-    View.OnTouchListener touchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            v.performClick();
-            Log.e(TAG, "onDown: " + event.getPointerCount());
-            twoFingersDownFlag = event.getPointerCount() == 2;
-            return mDetector.onTouchEvent(event);
-        }
-    };
-
-    View.OnTouchListener leftListener = (v, event) -> {
-        v.performClick();
-        Log.e(TAG, "onDown: " + event.getPointerCount());
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                SocketClass.getSocketInstance().emit("left_click_down");
-                break;
-
-            case MotionEvent.ACTION_MOVE:
-                break;
-
-            case MotionEvent.ACTION_UP:
-                SocketClass.getSocketInstance().emit("left_click_up");
-                break;
-        }
-        return true;
-    };
-
-    View.OnTouchListener rightListener = (v, event) -> {
-        v.performClick();
-        Log.e(TAG, "onDown: " + event.getPointerCount());
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                SocketClass.getSocketInstance().emit("right_click_down");
-
-                break;
-
-            case MotionEvent.ACTION_MOVE:
-                break;
-
-            case MotionEvent.ACTION_UP:
-                SocketClass.getSocketInstance().emit("right_click_up");
-                break;
-        }
-        return true;
-    };
 
 
     public void play(View view) {
@@ -205,61 +202,18 @@ public class MainActivity extends AppCompatActivity {
     public void go_back(View view) {
         mSocket.disconnect();
         SocketClass.destroySocketInstance();
-        sharedPreferences.edit().putString("IP_ADDRESS", null).apply();
+        sharedPreferences.edit().putString(SERVER_REQUEST_ADDRESS, null).apply();
         Intent intent = new Intent(this, ConnectionActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
     }
 
-
-    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
-
-        @Override
-        public boolean onSingleTapConfirmed(MotionEvent e) {
-            SocketClass.getSocketInstance().emit("single_tap");
-            return super.onSingleTapConfirmed(e);
-        }
-
-        @Override
-        public boolean onDoubleTap(MotionEvent e) {
-            SocketClass.getSocketInstance().emit("double_tap");
-            return super.onDoubleTap(e);
-        }
-
-        @Override
-        public boolean onDown(MotionEvent event) {
-            Log.e(TAG, "Not two: ");
-
-            return true;
-        }
-
-
-        @Override
-        public boolean onScroll(MotionEvent e1, MotionEvent e2,
-                                float distanceX, float distanceY) {
-            if (twoFingersDownFlag) {
-                if (distanceY < 0) distanceY += -50;
-                else distanceY += 50;
-                SocketClass.getSocketInstance().emit("scroll", distanceY * -1);
-            } else {
-                SocketClass.getSocketInstance().emit("mouse_data", distanceX * -1, distanceY * -1);
-            }
-            Log.e(getClass().getName(), "onScroll: " + distanceX + " " + distanceY + " ");
-            return true;
-        }
-
-        @Override
-        public boolean onFling(MotionEvent event1, MotionEvent event2,
-                               float velocityX, float velocityY) {
-            return true;
-        }
-    }
-
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean("MEDIA_TREY", isVisible);
+        outState.putBoolean(MEDIA_TREY, isVisible);
+        outState.putInt(MOUSE_KEYBOARD_RES, iconId);
     }
 
     @Override

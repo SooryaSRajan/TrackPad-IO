@@ -14,73 +14,48 @@
         android:onClick="reveal_hide_media"
         android:src="@drawable/ic_baseline_menu_24"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginTop="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="Open Media Controls" />
+        android:contentDescription="Open Media Controls"
+        tools:ignore="HardcodedText" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/keyboard_mouse_fab"
         android:layout_toStartOf="@id/media_control"
+        app:fabSize="mini"
+        android:src="@drawable/ic_baseline_keyboard_24"
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Go Back to Setup Page"
+        tools:ignore="HardcodedText,RelativeOverlap" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_toStartOf="@id/keyboard_mouse_fab"
         app:fabSize="mini"
         android:onClick="go_back"
         android:src="@drawable/ic_baseline_arrow_back_24"
         android:layout_marginTop="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="Go Back to Setup Page" />
+        android:contentDescription="Go Back to Setup Page"
+        tools:ignore="HardcodedText,RelativeOverlap" />
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/frame_layout"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="5">
+        android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/root"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:orientation="horizontal" >
-
-        <androidx.cardview.widget.CardView
-            android:clickable="true"
-            android:id="@+id/left_button"
-            app:cardCornerRadius="5dp"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:elevation="12dp"
-            app:cardBackgroundColor="#424242"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="NestedWeights" />
-
-        <androidx.cardview.widget.CardView
-            android:clickable="true"
-            android:id="@+id/right_button"
-            app:cardCornerRadius="5dp"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:elevation="12dp"
-            app:cardBackgroundColor="#424242"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+    </FrameLayout>
     <LinearLayout
         android:visibility="gone"
         android:id="@+id/media_control_layout"
@@ -91,16 +66,17 @@
         android:layout_height="match_parent">
 
         <ImageButton
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="play"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_pause_24"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:ignore="NestedWeights"
-            android:contentDescription="TODO" />
+            tools:ignore="NestedWeights" />
 
         <ImageButton
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="decreaseVolume"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_volume_down_24"
@@ -109,6 +85,7 @@
             android:layout_height="match_parent"/>
 
         <ImageButton
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="increaseVolume"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_volume_up_24"
@@ -117,6 +94,7 @@
             android:layout_height="match_parent"/>
 
         <ImageButton
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="muteVolume"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_volume_off_24"
@@ -125,6 +103,7 @@
             android:layout_height="match_parent"/>
 
         <ImageButton
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="copyContent"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_content_copy_24"
@@ -134,6 +113,7 @@
 
 
         <ImageButton
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="pasteContent"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_content_paste_24"
@@ -142,6 +122,7 @@
             android:layout_height="match_parent"/>
 
         <ImageButton
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="undo"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_undo_24"
@@ -150,6 +131,7 @@
             android:layout_height="match_parent"/>
 
         <ImageButton
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="redo"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_redo_24"
@@ -158,13 +140,13 @@
             android:layout_height="match_parent"/>
 
         <ImageButton
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="cut"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_content_cut_24"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-
     </LinearLayout>
 </LinearLayout>
 </RelativeLayout>

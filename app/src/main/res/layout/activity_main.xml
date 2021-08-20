@@ -104,6 +104,15 @@
 
         <ImageButton
             style="@style/Widget.AppCompat.Button.Colored"
+            android:onClick="cut"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_content_cut_24"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageButton
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="copyContent"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_content_copy_24"
@@ -139,14 +148,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <ImageButton
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:onClick="cut"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_baseline_content_cut_24"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+
     </LinearLayout>
 </LinearLayout>
 </RelativeLayout>

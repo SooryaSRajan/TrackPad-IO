@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
@@ -33,7 +34,7 @@ import static com.ssr_projects.trackpad.Constants.Constants.SERVER_REQUEST_ADDRE
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getName();
-    private Socket mSocket = SocketClass.getSocketInstance();
+    private final Socket mSocket = SocketClass.getSocketInstance();
     private LinearLayout mediaControlLayout;
     private boolean isVisible = false;
     private SharedPreferences sharedPreferences;
@@ -41,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private int iconId = R.drawable.ic_baseline_keyboard_24;
     private Fragment trackPadFragment, keyboardFragment;
     FloatingActionButton keyboardTrackPadButton;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

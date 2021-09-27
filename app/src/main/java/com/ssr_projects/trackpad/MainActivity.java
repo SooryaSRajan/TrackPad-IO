@@ -16,6 +16,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ssr_projects.trackpad.Fragments.KeyboardFragment;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getName();
     private final Socket mSocket = SocketClass.getSocketInstance();
-    private LinearLayout mediaControlLayout;
+    private LinearLayout mediaControlLayout, holderLayout;
     private boolean isVisible = false;
     private SharedPreferences sharedPreferences;
     private LoadingDialog loadingDialog;
@@ -50,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
         mediaControlLayout = findViewById(R.id.media_control_layout);
         keyboardTrackPadButton = findViewById(R.id.keyboard_mouse_fab);
+        holderLayout = findViewById(R.id.holder_linear_layout);
+
+
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) holderLayout.getLayoutParams();
 
         sharedPreferences = getSharedPreferences(CONFIG_PREFERENCE_KEY, MODE_PRIVATE);
 
@@ -78,8 +83,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (iconId == R.drawable.ic_baseline_keyboard_24) {
             setTrackPadLayout();
+            params.addRule(RelativeLayout.ALIGN_PARENT_TOP, R.id.media_control);
         } else {
             setKeyboardLayout();
+            params.removeRule(RelativeLayout.ALIGN_PARENT_TOP);
         }
 
         keyboardTrackPadButton.setOnClickListener(view -> {
@@ -87,11 +94,12 @@ public class MainActivity extends AppCompatActivity {
                 keyboardTrackPadButton.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_baseline_mouse_24));
                 iconId = R.drawable.ic_baseline_mouse_24;
                 setKeyboardLayout();
-
+                params.removeRule(RelativeLayout.ALIGN_PARENT_TOP);
             } else {
                 keyboardTrackPadButton.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_baseline_keyboard_24));
                 iconId = R.drawable.ic_baseline_keyboard_24;
                 setTrackPadLayout();
+                params.addRule(RelativeLayout.ALIGN_PARENT_TOP, R.id.media_control);
             }
         });
 

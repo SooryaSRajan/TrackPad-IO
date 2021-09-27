@@ -1,5 +1,10 @@
 package com.ssr_projects.trackpad.Fragments;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,21 +16,29 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ssr_projects.trackpad.Helpers.Accelerometer;
 import com.ssr_projects.trackpad.Helpers.MyGestureDetector;
 import com.ssr_projects.trackpad.R;
 import com.ssr_projects.trackpad.Helpers.SocketClass;
 
 public class TrackPadFragment extends Fragment {
 
+    private SensorManager sensorManager;
+    private Sensor sensor;
+
     private GestureDetector mDetector;
     private String TAG = getClass().getName();
     private MyGestureDetector myGestureDetector;
+    private static TrackPadFragment trackPadFragment;
 
     public TrackPadFragment() {
+
     }
 
     public static TrackPadFragment newInstance() {
-        return new TrackPadFragment();
+        if(trackPadFragment == null)
+            trackPadFragment = new TrackPadFragment();
+        return trackPadFragment;
     }
 
     @Override
@@ -33,6 +46,11 @@ public class TrackPadFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_track_pad, container, false);
         myGestureDetector = new MyGestureDetector();
+
+        //sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        //sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+
+        //sensorManager.registerListener(new Accelerometer(), sensor, SensorManager.SENSOR_DELAY_GAME);
 
         mDetector = new GestureDetector(getActivity(), myGestureDetector);
         View touchPadView = view.findViewById(R.id.root);
@@ -62,6 +80,7 @@ public class TrackPadFragment extends Fragment {
         Log.e(TAG, "onDown: " + event.getPointerCount());
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                v.setPressed(true);
                 SocketClass.getSocketInstance().emit("left_click_down");
                 break;
 
@@ -69,6 +88,7 @@ public class TrackPadFragment extends Fragment {
                 break;
 
             case MotionEvent.ACTION_UP:
+                v.setPressed(false);
                 SocketClass.getSocketInstance().emit("left_click_up");
                 break;
         }
@@ -80,6 +100,7 @@ public class TrackPadFragment extends Fragment {
         Log.e(TAG, "onDown: " + event.getPointerCount());
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                v.setPressed(true);
                 SocketClass.getSocketInstance().emit("right_click_down");
                 break;
 
@@ -87,6 +108,7 @@ public class TrackPadFragment extends Fragment {
                 break;
 
             case MotionEvent.ACTION_UP:
+                v.setPressed(false);
                 SocketClass.getSocketInstance().emit("right_click_up");
                 break;
         }

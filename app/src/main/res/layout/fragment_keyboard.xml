@@ -1,9 +1,784 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragments.KeyboardFragment">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10"
+        tools:context=".Fragments.KeyboardFragment">
 
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:weightSum="13.3">
+
+            <Button
+                android:id="@+id/_1"
+                android:tag="esc"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"
+                android:text="esc"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_2"
+                android:tag="f1"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f1"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_3"
+                android:tag="f2"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f2"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_4"
+                android:tag="f3"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f3"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_5"
+                android:tag="f4"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f4"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_6"
+                android:tag="f5"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f5"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_7"
+                android:tag="f6"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f6"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_8"
+                android:tag="f7"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f7"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_9"
+                android:tag="f8"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f8"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_10"
+                android:tag="f9"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f9"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_11"
+                android:tag="f10"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f10"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_12"
+                android:tag="f11"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f11"
+                tools:ignore="NestedWeights" />
+
+            <Button
+                android:id="@+id/_13"
+                android:tag="f12"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="f12"
+                tools:ignore="NestedWeights" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="9.9"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/_14"
+                    android:tag="~"
+                    style="@style/button_style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="~"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_15"
+                    android:tag="1"
+                    style="@style/button_style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="1"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_16"
+                    android:tag="2"
+                    style="@style/button_style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="2"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_17"
+                    android:tag="3"
+                    style="@style/button_style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="3"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_18"
+                    style="@style/button_style"
+                    android:tag="4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="4"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_19"
+                    style="@style/button_style"
+                    android:tag="5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="5"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_20"
+                    style="@style/button_style"
+                    android:tag="6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="6"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_21"
+                    style="@style/button_style"
+                    android:tag="7"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="7"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_22"
+                    style="@style/button_style"
+                    android:tag="8"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="8"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_23"
+                    style="@style/button_style"
+                    android:tag="9"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="9"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_24"
+                    style="@style/button_style"
+                    android:tag="0"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_25"
+                    style="@style/button_style"
+                    android:tag="backspace"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="Backspace"
+                        tools:ignore="NestedWeights" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/_26"
+                    style="@style/button_style"
+                    android:tag="tab"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:text="tab"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_27"
+                    style="@style/button_style"
+                    android:tag="q"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Q"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_28"
+                    style="@style/button_style"
+                    android:tag="w"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="W"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_29"
+                    style="@style/button_style"
+                    android:tag="e"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="E"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_30"
+                    style="@style/button_style"
+                    android:tag="r"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="R"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_31"
+                    style="@style/button_style"
+                    android:tag="t"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="T"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_32"
+                    style="@style/button_style"
+                    android:tag="y"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Y"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_33"
+                    style="@style/button_style"
+                    android:tag="u"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="U"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_34"
+                    style="@style/button_style"
+                    android:tag="i"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="I"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_35"
+                    style="@style/button_style"
+                    android:tag="o"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="O"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_36"
+                    style="@style/button_style"
+                    android:tag="p"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="P"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_37"
+                    style="@style/button_style"
+                    android:tag="["
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="["
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_38"
+                    style="@style/button_style"
+                    android:tag="]"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="]"
+                    tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_39"
+                    style="@style/button_style"
+                    android:tag="@string/slash"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/slash"
+                    tools:ignore="NestedWeights" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/_40"
+                    style="@style/button_style"
+                    android:tag="capslock"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:text="Caps"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_41"
+                    style="@style/button_style"
+                    android:tag="a"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="A"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_42"
+                    style="@style/button_style"
+                    android:tag="s"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="S"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_43"
+                    style="@style/button_style"
+                    android:tag="d"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="D"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_44"
+                    style="@style/button_style"
+                    android:tag="f"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="F"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_45"
+                    style="@style/button_style"
+                    android:tag="g"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="G"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_46"
+                    style="@style/button_style"
+                    android:tag="h"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="H"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_47"
+                    style="@style/button_style"
+                    android:tag="j"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="J"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_48"
+                    style="@style/button_style"
+                    android:tag="k"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="K"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_49"
+                    style="@style/button_style"
+                    android:tag="l"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="L"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_50"
+                    style="@style/button_style"
+                    android:tag=";"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=";"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_51"
+                    style="@style/button_style"
+                    android:tag="'"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="'"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_52"
+                    style="@style/button_style"
+                    android:tag="enter"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    android:text="Enter"
+                        tools:ignore="NestedWeights" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/_53"
+                    style="@style/button_style"
+                    android:tag="shift"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    android:text="Shift"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_54"
+                    style="@style/button_style"
+                    android:tag="z"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Z"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_55"
+                    style="@style/button_style"
+                    android:tag="x"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="X"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_56"
+                    style="@style/button_style"
+                    android:tag="c"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="C"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_57"
+                    style="@style/button_style"
+                    android:tag="v"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="V"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_58"
+                    style="@style/button_style"
+                    android:tag="b"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="B"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_59"
+                    style="@style/button_style"
+                    android:tag="n"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="N"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_60"
+                    style="@style/button_style"
+                    android:tag="m"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="M"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_61"
+                    style="@style/button_style"
+                    android:tag=","
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=","
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_62"
+                    style="@style/button_style"
+                    android:tag="."
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="."
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_63"
+                    style="@style/button_style"
+                    android:tag="/"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="/"
+                        tools:ignore="NestedWeights" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/_64"
+                    style="@style/button_style"
+                    android:tag="ctrl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="Ctrl"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_65"
+                    style="@style/button_style"
+                    android:tag="fn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="fn"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_66"
+                    style="@style/button_style"
+                    android:tag="alt"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="alt"
+                        tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/_67"
+                    style="@style/button_style"
+                    android:tag="space"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                        tools:ignore="NestedWeights" />
+
+                <ImageButton
+                    android:id="@+id/_68"
+                    android:tag="left"
+                    style="@style/button_style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_baseline_arrow_left_24"
+                    tools:ignore="NestedWeights" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/_69"
+                        android:tag="up"
+                        style="@style/button_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_arrow_drop_up_24"
+                        tools:ignore="NestedWeights" />
+
+                    <ImageButton
+                        android:id="@+id/_70"
+                        android:tag="down"
+                        style="@style/button_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                        tools:ignore="NestedWeights" />
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/_71"
+                    android:tag="right"
+                    style="@style/button_style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_baseline_arrow_right_24"
+                    tools:ignore="NestedWeights" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>

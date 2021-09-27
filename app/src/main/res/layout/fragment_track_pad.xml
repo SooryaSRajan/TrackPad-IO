@@ -22,24 +22,27 @@
             android:layout_weight="4"
             android:orientation="horizontal" >
 
-            <androidx.cardview.widget.CardView
-                style="@style/TrackPadCardView"
+            <Button
+                style="@style/button_style"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
                 android:clickable="true"
                 android:id="@+id/left_button"
                 android:layout_weight="1"
-                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:ignore="NestedWeights" />
 
-            <androidx.cardview.widget.CardView
-                style="@style/TrackPadCardView"
+            <Button
+                style="@style/button_style"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
                 android:clickable="true"
                 android:id="@+id/right_button"
                 android:layout_weight="1"
-                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+
         </LinearLayout>
 
     </LinearLayout>

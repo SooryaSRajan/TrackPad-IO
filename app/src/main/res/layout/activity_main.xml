@@ -14,8 +14,8 @@
         android:onClick="reveal_hide_media"
         android:src="@drawable/ic_baseline_menu_24"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="Open Media Controls"
@@ -26,24 +26,29 @@
         android:layout_toStartOf="@id/media_control"
         app:fabSize="mini"
         android:src="@drawable/ic_baseline_keyboard_24"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="Go Back to Setup Page"
         tools:ignore="HardcodedText,RelativeOverlap" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_toStartOf="@id/keyboard_mouse_fab"
-        app:fabSize="mini"
-        android:onClick="go_back"
-        android:src="@drawable/ic_baseline_arrow_back_24"
-        android:layout_marginTop="4dp"
+        android:layout_toLeftOf="@+id/keyboard_mouse_fab"
+        android:id="@+id/back_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="2dp"
         android:contentDescription="Go Back to Setup Page"
+        android:onClick="go_back"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:fabSize="mini"
         tools:ignore="HardcodedText,RelativeOverlap" />
 
 <LinearLayout
+    android:layout_alignParentTop="true"
+    android:id="@+id/holder_linear_layout"
+    android:layout_below="@+id/media_control"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -51,7 +56,7 @@
 
     <FrameLayout
         android:id="@+id/frame_layout"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -60,7 +65,7 @@
         android:visibility="gone"
         android:id="@+id/media_control_layout"
         android:orientation="horizontal"
-        android:layout_weight="9"
+        android:layout_weight="8.8"
         android:weightSum="9"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
